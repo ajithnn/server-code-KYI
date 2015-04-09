@@ -33,6 +33,7 @@ rest.getfile('/runpy', function(err, query,ctype) {
         var pathforPython = 'python ';
         var pathForFile = __dirname + '/python/grayFaceGreenEye.py ';
         exec(pathforPython + pathForFile + __dirname + " outImage_"+ query.id + ".jpg" , function(error, stdout, stderr) {
+             console.log(stdout);  
               console.log(error);      
         });
         return "done";
