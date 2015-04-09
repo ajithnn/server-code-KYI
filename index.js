@@ -36,7 +36,6 @@ rest.getfile('/runpy', function(err, query,ctype) {
              console.log(stdout);  
               console.log(error);      
         });
-        return "done";
     } else {
         console.log(err);
         return err;

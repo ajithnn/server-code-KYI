@@ -23,7 +23,9 @@ print fname
 
 b_img = cv2.imread(fname)
 siz = np.shape(b_img)
+print siz
 scaleDownFactor = int(np.sqrt(np.product(siz)/(640*640*3)))
+print scaleDownFactor
 nr =int(siz[0]/scaleDownFactor)
 nc = int(siz[1]/scaleDownFactor)
 img = cv2.resize(b_img, (nc, nr))
