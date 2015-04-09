@@ -19,6 +19,7 @@ eye_cascade = cv2.CascadeClassifier(VendorPath + '/share/OpenCV/haarcascades/haa
 #imgpath = '/Users/z001c3k/work/lens/testImages/'
 #imgoutpath = '/Users/z001c3k/work/lens/'
 fname = PathForRoot + "/CurrentImg.jpg"
+print fname
 
 b_img = cv2.imread(fname)
 siz = np.shape(b_img)

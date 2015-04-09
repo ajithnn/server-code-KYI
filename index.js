@@ -45,7 +45,7 @@ rest.getfile('/runpy', function(err, query,ctype) {
 
 rest.multipost('/PostPhoto', function(err, data) {
     if (!err) {
-        return "done";
+        console.log(data);
     } else {
         console.log(err);
     }
