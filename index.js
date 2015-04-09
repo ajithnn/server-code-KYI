@@ -28,7 +28,7 @@ rest.getfile('/image', function(err, query) {
     }
 })
 
-rest.getfile('/runpy', function(err, query,ctype) {
+rest.get('/runpy', function(err, query,ctype) {
     if (!err) {
         var pathforPython = 'python ';
         var pathForFile = __dirname + '/python/grayFaceGreenEye.py ';
@@ -36,6 +36,7 @@ rest.getfile('/runpy', function(err, query,ctype) {
              console.log(stdout);  
               console.log(error);      
         });
+        return "done"
     } else {
         console.log(err);
         return err;
@@ -45,6 +46,7 @@ rest.getfile('/runpy', function(err, query,ctype) {
 rest.multipost('/PostPhoto', function(err, data) {
     if (!err) {
         console.log(data);
+        return "done";
     } else {
         console.log(err);
     }
