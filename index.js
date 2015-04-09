@@ -61,9 +61,9 @@ io.on('connection', function(socket) {
         console.log(filename);
         if(filename == "outImage_"+socket.id+".jpg")
         {
-        consle.log("Inside Emitter");
+        console.log("Inside Emitter");
         var time = new Date().getTime();
-        socket.to(socket.id).emit("ImageModified", "/image?id=" + socket.id + "&time=" + time);
+        socket.broadcast.to(socket.id).emit("ImageModified", "/image?id=" + socket.id + "&time=" + time);
         }
     });
 });
