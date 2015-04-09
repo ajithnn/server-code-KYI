@@ -21,7 +21,21 @@ rest.setHeaders(header);
 
 rest.getfile('/image', function(err, query) {
     if (!err) {
-        return "./assets/CurrentImg.jpg";
+        return "./assets/outImage_" + query.id + ".jpg";
+    } else {
+        console.log(err);
+        return err;
+    }
+})
+
+rest.get('/runpy', function(err, query,ctype) {
+    if (!err) {
+        var pathforPython = 'python ';
+        var pathForFile = __dirname + '/python/grayFaceGreenEye.py ';
+        exec(pathforPython + pathForFile + __dirname + " outImage_"+ query.id + ".jpg" , function(error, stdout, stderr) {
+              console.log(error);      
+        });
+        return "done";
     } else {
         console.log(err);
         return err;
@@ -30,13 +44,7 @@ rest.getfile('/image', function(err, query) {
 
 rest.multipost('/PostPhoto', function(err, data) {
     if (!err) {
-        var pathforPython = 'python ';
-        var pathForFile = __dirname + '/python/1.py ';
-        exec(pathforPython + pathForFile + __dirname, function(error, stdout, stderr) {
-		console.log(error);
-		console.log(stdout);
-		console.log(stderr);	
-        });
+        return "done";
     } else {
         console.log(err);
     }
@@ -47,9 +55,12 @@ var io = require('socket.io')(server)
 
 io.on('connection', function(socket) {
 	console.log("Connected: " + socket.id);
-    fs.watch('./assets/CurrentImg.jpg', function(event, filename) {
+    fs.watch('./assets/', function(event, filename) {
+        if(filename == "outImage_"+socket.id+".jpg")
+        {
         var time = new Date().getTime();
-        socket.emit("ImageModified", "/image?" + time);
+        socket.to(socket.id).emit("ImageModified", "/image?id=" + socket.id + "&time=" + time);
+        }
     });
 });
 rest.port = process.env.PORT || 3000 ;
