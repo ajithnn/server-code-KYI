@@ -93,4 +93,4 @@ else:
                 print 'bad eye detected'
 
 #orig_bw[]
-cv2.imwrite(PathForRoot + '/' + sysargv[2], b_img)
+cv2.imwrite(PathForRoot + '/' + sys.argv[2], b_img)
