@@ -63,7 +63,7 @@ io.on('connection', function(socket) {
         {
         console.log("Inside Emitter");
         var time = new Date().getTime();
-        socket.broadcast.to(socket.id).emit("ImageModified", "/image?id=" + socket.id + "&time=" + time);
+        io.to(socket.id).emit("ImageModified", "/image?id=" + socket.id + "&time=" + time);
         }
     });
 });
