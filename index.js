@@ -34,7 +34,7 @@ rest.get('/runpy', function(err, query,ctype) {
         var pathForFile = __dirname + '/python/grayFaceGreenEye.py ';
         exec(pathforPython + pathForFile + __dirname + " outImage_"+ query.id + ".jpg" , function(error, stdout, stderr) {
              console.log(stdout);  
-              console.log(error);      
+             console.log(error);      
         });
         return "done"
     } else {
@@ -58,10 +58,8 @@ var io = require('socket.io')(server)
 io.on('connection', function(socket) {
 	console.log("Connected: " + socket.id);
     fs.watch('./assets/', function(event, filename) {
-        console.log(filename);
         if(filename == "outImage_"+socket.id+".jpg")
         {
-        console.log("Inside Emitter");
         var time = new Date().getTime();
         io.to(socket.id).emit("ImageModified", "/image?id=" + socket.id + "&time=" + time);
         }
