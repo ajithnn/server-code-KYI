@@ -5,7 +5,7 @@ import cv2
 import sys
 #import matplotlib.pyplot as plt
 import cv2.cv as cv
-
+print sys.argv[1],sys.argv[2]
 PathForRoot = sys.argv[1] + '/assets'
 VendorPath = '/app/vendor'
 eyeI = cv2.imread(PathForRoot + '/green-big.png')

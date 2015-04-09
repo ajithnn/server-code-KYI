@@ -28,7 +28,7 @@ rest.getfile('/image', function(err, query) {
     }
 })
 
-rest.get('/runpy', function(err, query,ctype) {
+rest.getfile('/runpy', function(err, query,ctype) {
     if (!err) {
         var pathforPython = 'python ';
         var pathForFile = __dirname + '/python/grayFaceGreenEye.py ';
