@@ -9,7 +9,7 @@ print sys.argv[1],sys.argv[2]
 PathForRoot = sys.argv[1] + '/assets'
 VendorPath = '/app/vendor'
 
-eyeI = cv2.imread(PathForRoot + 'green-big.png')
+eyeI = cv2.imread(PathForRoot + '/green-big.png')
 releyeI = eyeI[9:82, 9:82, :]
 sizeye = np.shape(releyeI)
 eyerad = 36
