@@ -21,7 +21,7 @@ rest.setHeaders(header);
 
 rest.getfile('/image', function(err, query) {
     if (!err) {
-        return "./assets/outImage_" + query.id + ".jpg";
+        return "./assets/" + query.id + ".jpg";
     } else {
         console.log(err);
         return err;
