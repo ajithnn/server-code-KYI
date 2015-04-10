@@ -1,7 +1,7 @@
 # get gray face with green lens overlayed - finished version 1
 import numpy as np
 import cv2
-#import os
+import sys
 #import matplotlib.pyplot as plt
 import cv2.cv as cv
 
