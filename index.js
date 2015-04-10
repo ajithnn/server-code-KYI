@@ -61,6 +61,7 @@ io.on('connection', function(socket) {
         if(filename == "outImage_"+socket.id+".jpg")
         {
         var time = new Date().getTime();
+        console.log("Sent");
         io.to(socket.id).emit("ImageModified", "/image?id=outImage_" + socket.id + "&time=" + time);
         }
     });
