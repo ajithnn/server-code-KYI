@@ -96,7 +96,7 @@ try:
                 else:
                     print 'bad eye detected'
 except Exception,e:
-    fo = open(PathForRoot + '/' + sys.argv[3], "rw+")
+    fo = open(PathForRoot + '/' + sys.argv[3], "w+")
     fo.write(e)
     fo.close()
 #orig_bw[]
