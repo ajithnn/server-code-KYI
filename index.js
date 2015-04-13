@@ -34,19 +34,11 @@ rest.get('/runpy', function(err, query,ctype) {
         var pathforPython = 'python ';
         var pathForFile = __dirname + '/python/grayFaceGreenEye.py ';
         console.log(pathforPython + pathForFile + __dirname + " outImage_"+ query.id + ".jpg");
-        exec(pathforPython + pathForFile + __dirname + " outImage_"+ query.id + ".jpg" , function(error, stdout, stderr) {
+        exec(pathforPython + pathForFile + __dirname + " outImage_"+ query.id + ".jpg" + " error_" + query.id, function(error, stdout, stderr) {
              console.log(stdout);  
              console.log(error); 
-	     if(error){
-		statFlag= false
-	     }     
         });
-	if(statFlag){
         return "done"
-	}
-	else{
-	return "Fail"
-	}
     } else {
         console.log(err);
         return err;
@@ -74,6 +66,14 @@ io.on('connection', function(socket) {
         console.log("Sent");
         io.to(socket.id).emit("ImageModified", "/image?id=outImage_" + socket.id + "&time=" + time);
         }
+	else if(filename == "error_" + socket.id){
+		fs.readFile(filename, 'utf8', function (err,data) {
+ 	 	if (err) {
+    			return console.log(err);
+  		}
+  			io.to(socket.id).emit("Error",data);
+		});
+	}
     });
 });
 rest.port = process.env.PORT || 3000 ;
