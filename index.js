@@ -29,15 +29,24 @@ rest.getfile('/image', function(err, query) {
 })
 
 rest.get('/runpy', function(err, query,ctype) {
+    var statFlag = true;
     if (!err) {
         var pathforPython = 'python ';
         var pathForFile = __dirname + '/python/grayFaceGreenEye.py ';
         console.log(pathforPython + pathForFile + __dirname + " outImage_"+ query.id + ".jpg");
         exec(pathforPython + pathForFile + __dirname + " outImage_"+ query.id + ".jpg" , function(error, stdout, stderr) {
              console.log(stdout);  
-             console.log(error);      
+             console.log(error); 
+	     if(error){
+		statFlag= false
+	     }     
         });
+	if(statFlag){
         return "done"
+	}
+	else{
+	return "Fail"
+	}
     } else {
         console.log(err);
         return err;
