@@ -97,7 +97,7 @@ try:
                     print 'bad eye detected'
 except Exception,e:
     fo = open(PathForRoot + '/' + sys.argv[3], "w+")
-    fo.write(e)
+    fo.write(e.strerror)
     fo.close()
 #orig_bw[]
 cv2.imwrite(PathForRoot + '/' + sys.argv[2], b_img)
