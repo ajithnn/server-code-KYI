@@ -1,7 +1,6 @@
 var rest = require('exprestify')
 var fs = require('fs')
 var exec = require('child_process').exec;
-var io = rest.getSocketServer()
 
 var header = {
     "Access-Control-Allow-Origin": "null",
@@ -54,6 +53,8 @@ rest.multipost('/PostPhoto', function(err, data) {
         console.log(err);
     }
 }, multiopt);
+
+var io = rest.getSocketServer()
 
 io.on('connection', function(socket) {
 	console.log("Connected: " + socket.id);
