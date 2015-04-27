@@ -1,6 +1,7 @@
 var rest = require('exprestify')
 var fs = require('fs')
 var exec = require('child_process').exec;
+var io = rest.getSocketServer()
 
 var header = {
     "Access-Control-Allow-Origin": "null",
@@ -54,9 +55,6 @@ rest.multipost('/PostPhoto', function(err, data) {
     }
 }, multiopt);
 
-var server = rest.getSocketServer()
-var io = require('socket.io')(server)
-
 io.on('connection', function(socket) {
 	console.log("Connected: " + socket.id);
     fs.watch('./assets/', function(event, filename) {
@@ -77,6 +75,6 @@ io.on('connection', function(socket) {
     });
 });
 rest.port = process.env.PORT || 3000 ;
-server.listen(process.env.PORT || 3000, function() {
+rest.listen(process.env.PORT || 3000, function() {
     console.log("Listening on port 0.0.0.0:%s", process.env.PORT || rest.port)
 })
