@@ -6,7 +6,6 @@ import numpy as np
 import cv2
 import copy as cp
 import os
-import matplotlib.pyplot as plt
 import cv2.cv as cv
 import time
 import scipy as sp
