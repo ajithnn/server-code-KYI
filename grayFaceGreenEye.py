@@ -9,6 +9,7 @@ import cv2.cv as cv
 import time
 import scipy as sp
 from scipy import signal
+import sys
 
 def cutCircle(center, radius, img):
     siz = np.shape(img)
